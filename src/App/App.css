@@ -1,0 +1,46 @@
+.App{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 400px;
+    height: 200px;
+    margin-bottom: 100px;
+    margin-right: 160px;
+    padding: 40px;
+    background: linear-gradient(rgb(255, 255, 255), rgb(31, 83, 0));
+    border-radius: 15px;
+    box-shadow: 0 15px 30px 5px rgb(0 0 0 / 30%);
+}
+
+#title{
+    font-size: 30px;
+    text-align: center;
+    margin: 0;
+}
+
+.player-controls {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    font-size: 45px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+    border: black solid 2px;
+    border-radius: 5px;
+    margin: 0 15px;
+    background-color: #bdccb4;
+    min-width: 70px;
+    height: 70px;
+}
+
+button:hover {
+    transform: scale(1.2);
+    background-color: white;
+    border-color: white;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
