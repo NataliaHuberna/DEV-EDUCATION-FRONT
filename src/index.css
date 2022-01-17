@@ -1,0 +1,15 @@
+html {
+    height: 100vh;  
+}
+body {
+    background-image: url('https://s1.1zoom.ru/big0/812/Holidays_Christmas_463479.jpg');
+    background-size: cover;
+    color: white;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 2rem;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
