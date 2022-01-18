@@ -3,12 +3,16 @@ import React, { Component } from 'react';
 import './TaskInput.css';
 
 class TaskInput extends Component {
-    constructor(props) {
+  constructor(props) {
     super(props);
-
+    this.myRef = React.createRef();
     this.state = {
-      input: ''
+      input: '',
     };
+  }
+
+  componentDidMount() {
+    this.myRef.current.focus();
   }
 
   addTask = () => {
@@ -19,21 +23,25 @@ class TaskInput extends Component {
     }
   };
 
-  handleEnter = event => {
+  handleEnter = (event) => {
     if (event.key === 'Enter') this.addTask();
   };
-  
-  inputChange = event => this.setState({ input: event.target.value });
+
+  inputChange = (event) => this.setState({ input: event.target.value });
 
   render() {
     return (
       <div className="task-input">
         <input
+          ref={this.myRef}
           onKeyPress={this.handleEnter}
           onChange={this.inputChange}
           value={this.state.input}
+          placeholder="Add new task..."
         ></input>
-        <button onClick={this.addTask}>ADD</button>
+        <button disabled={!this.state.input.trim()} onClick={this.addTask}>
+          ADD
+        </button>
       </div>
     );
   }

@@ -21,8 +21,9 @@ class App extends Component {
         return (
           <div className="App">
             <div className="header"><h1>ToDoList</h1></div>
-              <TaskInput addTask={this.addTask}/>
-              <List todos={this.state.todos} checkChange = {this.checkChange} deleteTask={this.deleteTask}/>  
+            <TaskInput addTask={this.addTask} />
+            <h2>Tasks for day</h2>
+            <List todos={this.state.todos} checkChange = {this.checkChange} deleteTask={this.deleteTask}/>  
           </div>
       )
   }
