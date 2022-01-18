@@ -13,7 +13,7 @@ class TaskInput extends Component {
 
   addTask = () => {
     const { input } = this.state;
-    if (input) {
+    if (input.trim()) {
       this.props.addTask(input);
       this.setState({ input: '' });
     }
@@ -22,20 +22,16 @@ class TaskInput extends Component {
   handleEnter = event => {
     if (event.key === 'Enter') this.addTask();
   };
-
-  inputChange = event => {
-    this.setState({ input: event.target.value });
-  };
+  
+  inputChange = event => this.setState({ input: event.target.value });
 
   render() {
-    const { input } = this.state;
-
     return (
       <div className="task-input">
         <input
           onKeyPress={this.handleEnter}
           onChange={this.inputChange}
-          value={input}
+          value={this.state.input}
         ></input>
         <button onClick={this.addTask}>ADD</button>
       </div>
