@@ -11,10 +11,8 @@ const Item = ({taskText, deleteTask, checked, checkChange, id} ) => {
                 <input onClick={handleChangeCheckbox} className="btn-complete" type="checkbox"/>
                 <button onClick={handlDeleteTask} className="btn-delete">Delete</button>
             </div>
-
         </div>
-    
-)
-    }
+    )
+}
     
 export default Item;

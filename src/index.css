@@ -4,7 +4,23 @@ body {
     background: linear-gradient(to right, #a2e9e9, #e9bd5a);
 }
 
-code {
+body::-webkit-scrollbar {
+    width: 15px;
+    background-color: rgb(163 233 233 / 50%);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #9d9177;
+    border-radius: 9em;
+    box-shadow: inset 1px 1px 10px #f3faf7;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    cursor: pointer;
+    background-color: #4f7777;
+}
+
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
+} */

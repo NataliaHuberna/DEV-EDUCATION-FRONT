@@ -28,3 +28,10 @@ input {
     height: 25px;
     cursor: pointer;
 }
+
+input button:disabled,
+button[disabled]{
+    background-color: rgb(83, 88, 87);
+    opacity: 0.3;
+    cursor: not-allowed;
+}
