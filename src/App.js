@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import TaskInput from './components/TaskInput/TaskInput';
 import List from './components/List/List';
-import { API_URL } from './constants';
+import { API_URL } from './constants/constantsApi';
 import axios from 'axios';
 import Loader from './components/Loader/Loader';
 

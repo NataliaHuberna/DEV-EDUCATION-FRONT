@@ -21,6 +21,7 @@ h2 {
     font-family: sans-serif;
     box-shadow: inset 1px 1px 10px #f3faf7;
     padding: 5px;
+    border-radius: 5px
 }
 
 .App-logo {
