@@ -5,11 +5,6 @@
     top: 0; 
     left: 0; 
     z-index: 0;
-}
-
-#snow {
-    width: 100%; 
-    height: 100%; 
     background-image: url("https://yraaa.ru/_pu/27/15825154.png"), url("https://yraaa.ru/_pu/27/89961317.png"), url("https://yraaa.ru/_pu/27/21791255.png"); 
     -webkit-animation: snow 20s linear infinite;
     -moz-animation: snow 20s linear infinite;
@@ -21,3 +16,39 @@
 @-moz-keyframes snow {0% {background-position: 0px 0px, 0px 0px, 0px 0px;} 100% {background-position: 500px 1000px, 400px 400px, 300px 300px;}}
 @-webkit-keyframes snow {0% {background-position: 0px 0px, 0px 0px, 0px 0px;} 100% {background-position: 500px 1000px, 400px 400px, 300px 300px;}}
 @-ms-keyframes snow {0% {background-position: 0px 0px, 0px 0px, 0px 0px;} 100% {background-position: 500px 1000px, 400px 400px, 300px 300px;}}
+
+h1 {
+    letter-spacing: 1rem;
+}
+
+.brand {
+    position: absolute;
+    top: 2%;
+    left: 3%;
+    font-size: 1.3rem;
+}
+
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-weight: bolder;
+    color: #1b006a;
+    text-shadow: 4px 0px 7px white;
+}
+
+hr {
+    margin: auto;
+    width: 50%;
+}
+
+.frosted-glass-effect {
+    background: linear-gradient(155deg, rgba(255, 255, 255, 0.2) -50%, rgba(255, 255, 255, 0.05) 80%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    -webkit-backdrop-filter: blur(25px);
+    backdrop-filter: blur(25px);
+}
