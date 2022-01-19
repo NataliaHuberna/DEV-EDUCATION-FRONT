@@ -11,24 +11,27 @@ class App extends Component {
     super(props);
       this.state = {
           todos: [],
-          isLoading: "",
+          isLoading: '',
       };
   }
-
+  
+  componentDidMount() {
+    this.getDataTasks();
+  }
+  
   showLoader = () => this.setState({ isLoading: true });
 
 
   hideLoader = () => this.setState({ isLoading: false });
 
 
-  setDataTasks = (tasks) => this.setState({ todos: tasks });
+//   setDataTasks = (tasks) => this.setState({ todos: tasks });
 
   getDataTasks = async () => {
     try {
       this.showLoader();
-      const responce = await axios.get(API_URL);
-      const tasks = responce.data;
-      this.setDataTasks(tasks);
+      const {data} = await axios.get(API_URL);
+      this.setState({ todos: data });
     } catch (error) {
       console.log(error);
     } finally {
@@ -36,22 +39,18 @@ class App extends Component {
     }
   };
 
-  componentDidMount() {
-    this.getDataTasks();
-  }
-
   addTask = (task) =>
     this.setState({
       todos: [
         ...this.state.todos,
-        { value: task, id: Date.now(), checked: false },
+        { title: task, id: Date.now(), completed: false },
       ],
     });
 
   checkChange = (id) => {
     this.setState({
       todos: this.state.todos.map((element) =>
-        element.id === id ? { ...element, checked: !element.checked } : element
+        element.id === id ? { ...element, completed: !element.completed } : element
       ),
     });
   };
@@ -75,7 +74,7 @@ class App extends Component {
             todos={this.state.todos}
             checkChange={this.checkChange}
             deleteTask={this.deleteTask}
-            /> : <h1>Something was warn!</h1>}
+            /> : <h1>You have no tasks!</h1>}
       </div>
     );
   }

@@ -5,11 +5,11 @@ import Item from '../Item/Item';
 const List = ({todos, deleteTask, checkChange}) => (
     <div className="tasks">
         {todos.map((el) => <Item 
-            taskText={el.value} 
+            title = {el.title} 
             deleteTask={deleteTask} 
             key = {el.id} 
             id={el.id} 
-            checked = {el.checked} 
+            completed = {el.completed} 
             checkChange = {checkChange} />
             )}
         </div>

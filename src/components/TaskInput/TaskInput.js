@@ -5,14 +5,14 @@ import './TaskInput.css';
 class TaskInput extends Component {
   constructor(props) {
     super(props);
-    this.myRef = React.createRef();
+    this.inputRef = React.createRef();
     this.state = {
       input: '',
     };
   }
 
   componentDidMount() {
-    this.myRef.current.focus();
+    this.inputRef.current.focus();
   }
 
   addTask = () => {
@@ -33,7 +33,7 @@ class TaskInput extends Component {
     return (
       <div className="task-input">
         <input
-          ref={this.myRef}
+          ref={this.inputRef}
           onKeyPress={this.handleEnter}
           onChange={this.inputChange}
           value={this.state.input}

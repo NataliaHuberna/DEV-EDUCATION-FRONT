@@ -1,1 +1,1 @@
-export const API_URL = 'https://jsonplaceholder.typicode.com/todos?_limit=15';
+export const API_URL = 'https://jsonplaceholder.typicode.com/todos?_limit=7';
