@@ -8,7 +8,7 @@ const Item = ({title, deleteTask, completed, checkChange, id} ) => {
         <div className={completed ? "item checked" : "item"}>
             <div className="description">{title}</div>
             <div className="buttons">
-                <input onClick={handleChangeCheckbox} className="btn-complete" type="checkbox"/>
+                <input onClick={handleChangeCheckbox} className="btn-complete" type="checkbox" checked = {completed ? "checked" : ""}/>
                 <button onClick={handlDeleteTask} className="btn-delete">Delete</button>
             </div>
         </div>

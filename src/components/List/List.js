@@ -12,7 +12,7 @@ const List = ({todos, deleteTask, checkChange}) => (
             completed = {el.completed} 
             checkChange = {checkChange} />
             )}
-        </div>
+    </div>
 )
 
 export default List;
