@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import TaskInput from './components/TaskInput/TaskInput';
 import List from './components/List/List';
-import { API_URL } from './constants/constantsApi';
+import { API_URL } from './constants/api';
 import axios from 'axios';
 import Loader from './components/Loader/Loader';
 
@@ -28,8 +28,6 @@ class App extends Component {
             this.showLoader();
             const { data } = await axios.get(`${API_URL}?_limit=7`);
             this.setState({ todos: data });
-        } catch (error) {
-            console.log(error);
         } finally {
             this.hideLoader();
         }
@@ -41,19 +39,15 @@ class App extends Component {
             const body = { title, id: Date.now(), completed: false };
             const { data } = await axios.post(API_URL, body);
             this.setState({ todos: [...this.state.todos, body] });
-        } catch (error) {
-            console.log(error);
         } finally {
             this.hideLoader();
         }
     };
 
-    checkChange = (id) => {
-        this.setState({
-            todos: this.state.todos.map((element) =>
-                element.id === id
-                    ? { ...element, completed: !element.completed }
-                    : element
+    checkChange = (id) => {this.setState({todos: this.state.todos.map((element) =>
+            element.id === id
+                ? { ...element, completed: !element.completed }
+                : element
             ),
         });
     };
@@ -62,11 +56,7 @@ class App extends Component {
         try {
             this.showLoader();
             const response = await axios.delete(`${API_URL}/${id}`);
-            if (response.status === 200) {
-                this.setState({todos: this.state.todos.filter((todo) => todo.id !== id)});
-            }
-        } catch (error) {
-            console.log(error);
+            this.setState({todos: this.state.todos.filter((todo) => todo.id !== id)});
         } finally {
             this.hideLoader();
         }
