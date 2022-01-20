@@ -11,8 +11,8 @@ const List = ({todos, deleteTask, checkChange}) => (
             id={el.id} 
             completed = {el.completed} 
             checkChange = {checkChange} />
-            )}
+        )}
     </div>
-)
+);
 
 export default List;

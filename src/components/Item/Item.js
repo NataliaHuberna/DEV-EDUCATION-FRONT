@@ -12,7 +12,7 @@ const Item = ({title, deleteTask, completed, checkChange, id} ) => {
                 <button onClick={handlDeleteTask} className="btn-delete">Delete</button>
             </div>
         </div>
-    )
-}
+    );
+};
     
 export default Item;
