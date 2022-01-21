@@ -28,6 +28,8 @@ class App extends Component {
             this.showLoader();
             const { data } = await axios.get(`${API_URL}?_limit=7`);
             this.setState({ todos: data });
+        } catch (error) {
+            return false;
         } finally {
             this.hideLoader();
         }
@@ -37,26 +39,30 @@ class App extends Component {
         try {
             this.showLoader();
             const body = { title, id: Date.now(), completed: false };
-            const { data } = await axios.post(API_URL, body);
+            await axios.post(API_URL, body);
             this.setState({ todos: [...this.state.todos, body] });
+        } catch (error) {
+            return false;
         } finally {
             this.hideLoader();
         }
     };
 
     checkChange = (id) => {this.setState({todos: this.state.todos.map((element) =>
-            element.id === id
-                ? { ...element, completed: !element.completed }
-                : element
-            ),
-        });
+        element.id === id
+            ? { ...element, completed: !element.completed }
+            : element
+    ),
+    });
     };
 
     deleteTask = async (id) => {
         try {
             this.showLoader();
-            const response = await axios.delete(`${API_URL}/${id}`);
+            await axios.delete(`${API_URL}/${id}`);
             this.setState({todos: this.state.todos.filter((todo) => todo.id !== id)});
+        } catch (error) {
+            return false;
         } finally {
             this.hideLoader();
         }
