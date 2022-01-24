@@ -19,7 +19,7 @@ class App extends Component {
         super(props);
         this.state = {
             users: [],
-            isLoading: true,
+            isLoading: true,         
         };
     }
 
@@ -27,23 +27,13 @@ class App extends Component {
         this.getUsers();
     }
 
-    showLoader = () => this.setState({ isLoading: true });
-
-    hideLoader = () => this.setState({ isLoading: false });
-
     getUsers = async () => {
         try {
-            this.showLoader();
+            this.setState({ isLoading: true });
             const { data } = await axios.get(API_URL);
-            const users = data.map((element) => {
-                const { name, username, email, phone, website, address } = element;
-                return { name, username, email, phone, website, address };
-            });
-            this.setState({ users: users });
-        } catch (error) {
-            return false;
+            this.setState({ users: data });
         } finally {
-            this.hideLoader();
+            this.setState({ isLoading: false });
         }
     };
 
