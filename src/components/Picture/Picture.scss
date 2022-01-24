@@ -1,0 +1,23 @@
+.picture{
+    margin: 10px;
+    border: solid 3px white;
+    position: relative;
+}
+
+.picture__cover__inner {
+   position: relative;
+    width: 350px;
+    height: 350px;
+}
+
+.picture__cover{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.9;
+}
+
+.picture__cover:hover {
+    opacity: 1;
+    cursor: pointer;
+}
