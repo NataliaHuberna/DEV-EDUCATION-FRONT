@@ -11,11 +11,18 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-        urlFullPicture: '',
-        imgUrls: [],
-        isLoading: true,
+            urlFullPicture: '',
+            imgUrls: [],
+            isLoading: true,
+            currentPage: 1,
         };
     }
+
+    // const [ currentPage, setCurrentPage ] = useState(1);
+
+    switchPage = (page) => {
+        this.setState({currentPage: page});
+    };
 
     componentDidMount() {
         this.getImgUrls();
@@ -37,37 +44,44 @@ class App extends Component {
 
     render() {
         return (
-        <div className="App">
-            <header className="header">
-                <div className="header__content">
-                    <a href="index.html" className="header__logo">Pictures Gallery</a>
-                    <Pagination />
-                </div>
-            </header>
-            <div className="container">
-                {this.state.urlFullPicture && (
-                    <FullPicture
-                    url={this.state.urlFullPicture}
-                    removeUrlFromState= {this.removeUrlFromState}
-                    />
-                )}
-                <div className="pictures">
-                    {this.state.isLoading ? (
-                    <Loader />
-                    ) : this.state.imgUrls.length ? (
-                    this.state.imgUrls.map((element) => (
-                        <Picture
-                        key={element}
-                        url={element}
-                        setUrlToState={this.setUrlToState}
+            <div className="App">
+                <header className="header">
+                    <div className="header__content">
+                        <a href="index.html" className="header__logo">
+                            Pictures Gallery
+                        </a>
+                        <Pagination switchPage={this.switchPage} />
+                    </div>
+                </header>
+                <div className="container">
+                    {this.state.urlFullPicture && (
+                        <FullPicture
+                        url={this.state.urlFullPicture}
+                        removeUrlFromState={this.removeUrlFromState}
                         />
-                    ))
-                    ) : (
-                    <h1>You have no images!</h1>
                     )}
+                    <div className="pictures">
+                        {this.state.isLoading ? (
+                        <Loader />
+                        ) : this.state.imgUrls.length ? (
+                        this.state.imgUrls
+                            .slice(
+                            (this.state.currentPage - 1) * 6,
+                            this.state.currentPage * 6
+                            )
+                            .map((element) => (
+                            <Picture
+                                key={element}
+                                url={element}
+                                setUrlToState={this.setUrlToState}
+                            />
+                            ))
+                        ) : (
+                        <h1>You have no images!</h1>
+                        )}
+                    </div>
                 </div>
             </div>
-        </div>
         );
     }
 }
