@@ -50,7 +50,7 @@ class App extends Component {
                         <a href="index.html" className="header__logo">
                             Pictures Gallery
                         </a>
-                        <Pagination switchPage={this.switchPage} />
+                        <Pagination switchPage={this.switchPage} currentPage={this.state.currentPage} />
                     </div>
                 </header>
                 <div className="container">
