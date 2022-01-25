@@ -22,7 +22,7 @@ class App extends Component {
 
 
     switchPage = (page) => {
-        this.setState({currentPage: page, urls: this.state.imgUrls.slice((this.state.currentPage - 1) * 6, this.state.currentPage * 6)});
+        this.setState({currentPage: page, urls: this.state.imgUrls.slice((page - 1) * 6, page * 6)});
     };
 
     componentDidMount() {
@@ -33,7 +33,7 @@ class App extends Component {
         try {
             this.setState({ isLoading: true });
             const { data } = await axios.get(API_URL);
-            this.setState({ imgUrls: data.message, urls: this.state.imgUrls.slice(0, 6)});
+            this.setState({ imgUrls: data.message, urls: data.message.slice(0, 6)});
         } finally {
             this.setState({ isLoading: false });
         }
