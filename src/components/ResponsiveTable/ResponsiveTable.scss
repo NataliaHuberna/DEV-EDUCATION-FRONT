@@ -24,7 +24,7 @@
         margin-bottom: 0;
         height: 60px;
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr ;
+        grid-template-columns: 1fr 1fr minmax(210px, 1fr) minmax(210px, 1fr) 150px minmax(310px, 1fr);
         align-items: center;
         &:nth-child(even) {
             background: $bgColor;
@@ -63,9 +63,12 @@
 
         @media screen and (max-width: 1200px) {
             display: block;
-            text-align: right;
             font-size: 13px;
             border-bottom: 1px dotted $borderColor;
+        }
+
+        @media screen and (max-width: 480px){
+            text-align: right;
         }
     }
 
@@ -75,6 +78,11 @@
             float: left;
             text-transform: uppercase;
             font-weight: bold;
+            width: 200px;
+        }
+
+        @media screen and (max-width: 480px) {
+            width: auto;
         }
     }
 }
