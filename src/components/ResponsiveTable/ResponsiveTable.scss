@@ -13,7 +13,7 @@
         text-transform: uppercase;
         font-weight: bold;
         @media screen and (max-width: 1200px) {
-        display: none;
+            display: none;
         }
     }
 
@@ -30,14 +30,14 @@
             background: $bgColor;
         }
         @media screen and (max-width: 1200px) {
-        display: block;
-        height: auto;
-        border-bottom-width: 2px;
-        margin-bottom: 20px;
-        box-shadow: 6px -6px 5px #ddd;
-        &:nth-child(even) {
-            background: none;
-        }
+            display: block;
+            height: auto;
+            border-bottom-width: 2px;
+            margin-bottom: 20px;
+            box-shadow: 6px -6px 5px #ddd;
+            &:nth-child(even) {
+                background: none;
+            }
         }
     }
 
@@ -58,24 +58,23 @@
         font-size: 14px;
         border-bottom: none;
         &:last-child {
-        border-bottom: none;
+            border-bottom: none;
         }
 
         @media screen and (max-width: 1200px) {
-        display: block;
-        text-align: right;
-        font-size: 13px;
-        border-bottom: 1px dotted $borderColor;
-
+            display: block;
+            text-align: right;
+            font-size: 13px;
+            border-bottom: 1px dotted $borderColor;
         }
     }
 
     td:before {
         @media screen and (max-width: 1200px) {
-        content: attr(data-label);
-        float: left;
-        text-transform: uppercase;
-        font-weight: bold;
+            content: attr(data-label);
+            float: left;
+            text-transform: uppercase;
+            font-weight: bold;
         }
     }
 }
