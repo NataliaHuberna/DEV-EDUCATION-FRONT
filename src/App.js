@@ -13,15 +13,16 @@ class App extends Component {
         this.state = {
             urlFullPicture: '',
             imgUrls: [],
+            urls: [],
             isLoading: true,
             currentPage: 1,
         };
     }
 
-    // const [ currentPage, setCurrentPage ] = useState(1);
+
 
     switchPage = (page) => {
-        this.setState({currentPage: page});
+        this.setState({currentPage: page, urls: this.state.imgUrls.slice((this.state.currentPage - 1) * 6, this.state.currentPage * 6)});
     };
 
     componentDidMount() {
@@ -32,7 +33,7 @@ class App extends Component {
         try {
             this.setState({ isLoading: true });
             const { data } = await axios.get(API_URL);
-            this.setState({ imgUrls: data.message });
+            this.setState({ imgUrls: data.message, urls: this.state.imgUrls.slice(0, 6)});
         } finally {
             this.setState({ isLoading: false });
         }
@@ -64,12 +65,7 @@ class App extends Component {
                         {this.state.isLoading ? (
                         <Loader />
                         ) : this.state.imgUrls.length ? (
-                        this.state.imgUrls
-                            .slice(
-                            (this.state.currentPage - 1) * 6,
-                            this.state.currentPage * 6
-                            )
-                            .map((element) => (
+                    this.state.urls.map((element) => (
                             <Picture
                                 key={element}
                                 url={element}
