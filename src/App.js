@@ -41,13 +41,13 @@ class App extends Component {
         <div className="App">
             <Header />
             <div className="container">
-            <FieldInput setTime={this.setTime} />
+            <FieldInput setTime={this.setTime} resetTime={this.resetTime}/>
             <TimeDisplay time={this.state.timeLeft} />
             <Control
                 stopTimer={this.stopTimer}
                 startTimer={this.startTimer}
                 resetTime={this.resetTime}
-                isTick={!!this.timerID}
+                isTick={this.state.isTick}
                 handleTick={this.handleTick}
                 zero={this.state.timeLeft}
             />

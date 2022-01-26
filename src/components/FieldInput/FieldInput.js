@@ -11,6 +11,7 @@ class FieldInput extends Component {
     }
 
     setTime = () => {
+        this.props.resetTime();
         const { input } = this.state;
         if (input.trim()) {
         this.props.setTime(input);
