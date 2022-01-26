@@ -1,0 +1,26 @@
+.task-input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: darkgoldenrod;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.field-input {
+    display: flex;
+    width: 400px;
+    justify-content: space-evenly;
+}
+
+input {
+    width: 165px;
+    font-size: 30px;
+    background-color: #d5c3eb;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    &:invalid{
+        background-color: red;
+    }
+}
