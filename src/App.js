@@ -47,7 +47,7 @@ class App extends Component {
                 stopTimer={this.stopTimer}
                 startTimer={this.startTimer}
                 resetTime={this.resetTime}
-                isTick={this.state.isTick}
+                isTick={!!this.timerID}
                 handleTick={this.handleTick}
                 zero={this.state.timeLeft}
             />
