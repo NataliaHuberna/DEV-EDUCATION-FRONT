@@ -1,15 +1,10 @@
 import React from 'react';
 import './Button.scss';
 
-const Button = ({ contentKey, isDisabled, onClick, handleTick, isTick }) => {
-    const handleClick = () => {
-        onClick();
-        handleTick(isTick);
-    }
-
+const Button = ({ contentKey, isDisabled, onClick}) => {
     return (
         <button
-            onClick={handleClick}
+            onClick={onClick}
             disabled={isDisabled}
         >
             {contentKey}

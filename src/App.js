@@ -10,49 +10,48 @@ class App extends Component {
         super(props);
         this.state = {
             timeLeft: 0,
-            timeStart: 0,
-            isTick: false
+            timerId: 0,
         };
     }
      
-    setTime = (time) => this.setState({ timeStart: time, timeLeft: time });
+    setTime = (time) => this.setState({timeLeft: time });
 
     setNewTime = () => this.setState({ timeLeft: this.state.timeLeft - 1 });
 
     startTimer = () => {
-        this.setState({ isTick: true });
-        this.timerID = setInterval(() => {
+        this.timerId = setInterval(() => {
             if (this.state.timeLeft === 1) this.stopTimer();
             this.setNewTime();
         }, 1000);
+        this.setState({ timerId: this.timerId });
     } 
 
-    stopTimer = () => clearInterval(this.timerID);
-    
+    stopTimer = () => {
+        clearInterval(this.timerId);
+        this.setState({ timerId: 0 });
+    }
+
     resetTime = () => {
-        this.setState({ timeStart: 0, timeLeft: 0 });
+        this.setState({ timeLeft: 0 });
         this.stopTimer();
     };
     
-    handleTick = (isTick) => this.setState({ isTick: !isTick });
-    
     render() {
         return (
-        <div className="App">
+          <div className="App">
             <Header />
             <div className="container">
-            <FieldInput setTime={this.setTime} resetTime={this.resetTime}/>
-            <TimeDisplay time={this.state.timeLeft} />
-            <Control
-                stopTimer={this.stopTimer}
-                startTimer={this.startTimer}
-                resetTime={this.resetTime}
-                isTick={this.state.isTick}
-                handleTick={this.handleTick}
-                zero={this.state.timeLeft}
-            />
+                <FieldInput setTime={this.setTime} resetTime={this.resetTime} />
+                <TimeDisplay time={this.state.timeLeft} />
+                <Control
+                    stopTimer={this.stopTimer}
+                    startTimer={this.startTimer}
+                    resetTime={this.resetTime}
+                    isTick={!!this.state.timerId}
+                    zero={this.state.timeLeft}
+                />
             </div>
-        </div>
+          </div>
         );
   }
 }

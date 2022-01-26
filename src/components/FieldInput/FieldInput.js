@@ -11,31 +11,32 @@ class FieldInput extends Component {
     }
 
     setTime = () => {
-        this.props.resetTime();
         const { input } = this.state;
+        if (input === '' || input === '0') return;
+        this.props.resetTime();
         if (input.trim()) {
-        this.props.setTime(input);
-        this.setState({ input: '' });
-        }
+            this.props.setTime(input);
+            this.setState({ input: '' });
+        };
     };
 
     handleEnter = (event) => {
         if (event.key === 'Enter') this.setTime();
     };
 
-    inputChange = (event) => this.setState({ input: event.target.value.replace(/[^\d]/g, '') });
+    inputChange = (event) => this.setState({ input: event.target.value.replace(/[^\d]/, '')});
 
     render() {
         return (
             <div className="field-input">
                 <div className="task-input">
-                <input
-                    type="text"
-                    onKeyPress={this.handleEnter}
-                    onChange={this.inputChange}
-                    value={this.state.input}
-                    placeholder="Your time..."
-                ></input>
+                    <input
+                        type="text"
+                        onKeyPress={this.handleEnter}
+                        onChange={this.inputChange}
+                        value={this.state.input}
+                        placeholder="Your time..."
+                    ></input>
                 </div>
                 <Button contentKey={'set'} onClick={this.setTime} />
           </div>
