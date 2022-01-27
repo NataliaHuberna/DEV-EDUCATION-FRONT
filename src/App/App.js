@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Howl } from 'howler';
 import './App.css';
 
 const tracks = [
@@ -29,44 +28,42 @@ class App extends Component {
     constructor() {
         super();
         this.state = {
-        sound: new Howl({
-            src: tracks[0].url,
-        }),
-        currentTrack: 0,
-        isPlaying: false,
+            sound: tracks[0].url,
+            currentTrack: 0,
+            isPlaying: false,
         };
+        this.audioRef= React.createRef();
     }
 
-    componentDidUpdate() {
-        if (this.state.isPlaying) {
-        this.state.sound.play();
-        }
+    componentDidMount (){
+        this.audioRef.current.play();
     }
 
-    setData() {
-        this.setState({
-        sound: new Howl({
-            src: tracks[this.state.currentTrack].url,
-        }),
-        });
-    }
+    // componentDidUpdate() {
+    //     if (this.state.isPlaying) {
+    //         this.audioRef.current.play();
+    //     }
+    // }
 
-    playHandler() {
-        this.state.sound.play();
+    playHandler = () => {
+        this.audioRef.current.play();        
         this.setState({ isPlaying: true });
     }
 
+    stopHandler = () => {
+        console.log("stop");
+        this.audioRef.current.pause();
+        this.setState({ isPlaying: false });
+    }
+
     nextTrack() {
-        this.state.sound.stop();
         this.setState((prevState) => {
         const nextTrack = tracks[prevState.currentTrack + 1]
             ? prevState.currentTrack + 1
             : 0;
         return {
             ...prevState,
-            sound: new Howl({
-            src: tracks[nextTrack].url,
-            }),
+            sound: tracks[nextTrack].url,
             currentTrack: nextTrack,
             isPlaying: true,
         };
@@ -74,14 +71,11 @@ class App extends Component {
     }
 
     prevTrack() {
-        this.state.sound.stop();
         this.setState((prevState) => {
         const nextTrack = tracks[prevState.currentTrack - 1] ? prevState.currentTrack - 1 : tracks.length - 1;
         return {
             ...prevState,
-            sound: new Howl({
-            src: tracks[nextTrack].url,
-            }),
+            sound: tracks[nextTrack].url,
             currentTrack: nextTrack,
             isPlaying: true,
         };
@@ -92,24 +86,21 @@ class App extends Component {
         return (
         <div className="App">
             <h1 id="title">{tracks[this.state.currentTrack].title}</h1>
+            <audio src={this.state.sound} ref={this.audioRef}/>              
+                
             <div className="player-controls">
             <button onClick={() => this.prevTrack()}>&laquo;</button>
             <button
-                onClick={() => {
-                this.playHandler();
-                }}
+                onClick={this.playHandler}
                 disabled={this.state.isPlaying}
             >
                 &#9658;
             </button>
             <button
-                onClick={() => {
-                this.state.sound.stop();
-                this.setState({ isPlaying: false });
-                }}
+                className='btn-stop'
+                onClick={this.stopHandler}
                 disabled={!this.state.isPlaying}
             >
-                &#9899;
             </button>
             <button onClick={() => this.nextTrack()}>&raquo;</button>
             </div>

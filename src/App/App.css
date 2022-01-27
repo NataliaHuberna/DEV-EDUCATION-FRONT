@@ -34,6 +34,7 @@ button {
     background-color: #bdccb4;
     min-width: 70px;
     height: 70px;
+    position: relative;
 }
 
 button:hover {
@@ -43,4 +44,23 @@ button:hover {
     color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
+
+}
+
+.btn-stop{
+    display: grid;
+    place-items: center;
+}
+
+.btn-stop:disabled::after{
+background: grey;
+}
+
+.btn-stop::after {
+    content: "";
+    width: 1em;
+    height: 1em;
+    background: black;
+    border-radius: 50%;
+    display: block;
 }
