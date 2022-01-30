@@ -1,0 +1,56 @@
+@import './Components/Common/styles/colors.scss'; 
+
+table {
+    margin: 0 auto;
+    border-spacing: 0px 0px;
+}
+
+.circle {
+    height: 15px;
+    width: 15px;
+    border: 1px solid $black;
+    border-radius: 100px;
+}
+
+.circles {
+    margin: -40px 0 25px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.red-sm {
+    background-color: $red;
+}
+
+.yellow-sm {
+    background-color: $yellow;
+}
+
+.message {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.white {
+  height: 60px;
+  width: 60px;
+  background-color: $white;
+  border-radius: 100px;
+}
+
+.red {
+  height: 60px;
+  width: 60px;
+  background-color: $red;
+  border-radius: 100px;
+  transition: background-color 0.5s;
+}
+
+.yellow {
+  height: 60px;
+  width: 60px;
+  background-color: $yellow;
+  border-radius: 100px;
+  transition: background-color 0.5s;
+}
