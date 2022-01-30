@@ -1,0 +1,27 @@
+@import '../Common/styles/colors.scss';
+
+h1 {
+  text-align: center;
+  font-size: 50px;
+}
+
+.circle {
+  height: 15px;
+  width: 15px;
+  border: 1px solid $black;
+  border-radius: 100px;
+}
+
+.circles {
+  margin: -40px 0 25px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.red-sm {
+  background-color: $red;
+}
+
+.yellow-sm {
+  background-color: $yellow;
+}
