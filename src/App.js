@@ -2,7 +2,6 @@ import './App.css';
 import React, { Component } from 'react';
 import { colorSwatches } from './styles';
 import Button from './Button';
-// import Button from './Button';
 
 class App extends Component {
     constructor(props) {

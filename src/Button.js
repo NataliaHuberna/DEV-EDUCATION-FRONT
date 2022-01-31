@@ -1,6 +1,4 @@
-import React, { Component } from 'react';
-
-// import './Button.scss';
+import React from 'react';
 
 const Button = ({ type = 'button', className, onClick, contentKey, style }) => {
     const btnClasses = ['button'];
