@@ -1,0 +1,55 @@
+p {
+    text-align: center;
+    font-size: 40px;
+}
+
+canvas {
+    border: 1px solid #333;
+    margin: 20px 0px;
+}
+
+.maindiv {
+    padding: 10px;
+    margin: auto;
+    width: 800px;
+}
+
+button {
+    border: 0px;
+    margin: 1px;
+    height: 50px;
+    min-width: 75px;
+    cursor: pointer;
+}
+
+button:active {
+    border: 2px solid black;
+    border-radius: 15px;
+}
+
+.active{
+    border: 2px solid black;
+    border-radius: 15px;
+}
+
+.colors {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.colors button:last-child {
+    color: white;
+}
+
+.size{
+    text-align: center;
+    min-width: 75px;
+    font-size: 40px;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
