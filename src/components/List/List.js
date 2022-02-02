@@ -1,9 +1,9 @@
 import React from 'react';
-import './List.css';
+import {StDiv} from './styled';
 import Item from '../Item/Item';
 
 const List = ({todos, deleteTask, checkChange}) => (
-    <div className="tasks">
+    <StDiv>
         {todos.map((el) => <Item 
             taskText={el.value} 
             deleteTask={deleteTask} 
@@ -12,7 +12,7 @@ const List = ({todos, deleteTask, checkChange}) => (
             checked = {el.checked} 
             checkChange = {checkChange} />
             )}
-        </div>
+    </StDiv>
 )
 
 export default List;

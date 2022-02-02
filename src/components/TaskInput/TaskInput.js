@@ -1,50 +1,37 @@
-import React, { Component } from 'react';
+import React,  { useState, useEffect } from 'react';
+import {StDiv, StButton, StInput} from "./styled";
 
-import './TaskInput.css';
+const TaskInput = ({addTask}) => {
 
-class TaskInput extends Component {
-  constructor(props) {
-    super(props);
-    this.myRef = React.createRef();
-    this.state = {
-      input: '',
+    const inputRef = React.createRef();
+    const[input, setInput] = useState('');
+
+    useEffect(()=> inputRef.current.focus());
+
+    const addTaskToList = () => {
+        if (input.trim()) {
+            addTask(input);
+            setInput( '');
+        }
     };
-  }
 
-  componentDidMount() {
-    this.myRef.current.focus();
-  }
+    const handleEnter = (event) => {if (event.key === 'Enter') addTaskToList()};
+    const inputChange = (event) => setInput(event.target.value );
 
-  addTask = () => {
-    const { input } = this.state;
-    if (input.trim()) {
-      this.props.addTask(input);
-      this.setState({ input: '' });
-    }
-  };
-
-  handleEnter = (event) => {
-    if (event.key === 'Enter') this.addTask();
-  };
-
-  inputChange = (event) => this.setState({ input: event.target.value });
-
-  render() {
     return (
-      <div className="task-input">
-        <input
-          ref={this.myRef}
-          onKeyPress={this.handleEnter}
-          onChange={this.inputChange}
-          value={this.state.input}
-          placeholder="Add new task..."
-        ></input>
-        <button disabled={!this.state.input.trim()} onClick={this.addTask}>
-          ADD
-        </button>
-      </div>
+        <StDiv>
+            <StInput
+                ref={inputRef}
+                onKeyPress={handleEnter}
+                onChange={inputChange}
+                value={input}
+                placeholder="Add new task..."
+            />
+            <StButton disabled={!input.trim()} onClick={addTaskToList}>
+                ADD
+            </StButton>
+        </StDiv>
     );
-  }
 }
 
 export default TaskInput;
