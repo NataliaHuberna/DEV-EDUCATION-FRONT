@@ -1,13 +1,12 @@
 class Ball {
-    constructor(ctx, x, y, speedX, speedY, color, size, text) {
+    constructor(ctx, x, y, speedX, speedY, color, size) {
         this.ctx = ctx;
-        this.x = x; //horizontal position
-        this.y = y; //vertical position
+        this.x = x;
+        this.y = y;
         this.speedX = speedX;
         this.speedY = speedY;
         this.color = color;
         this.size = size;
-        this.text = text;
     }
 
     draw() {
@@ -19,7 +18,8 @@ class Ball {
         this.ctx.font = `${this.size}px Arial`;
         this.ctx.fillStyle = 'black';
         this.ctx.textBaseline = 'middle';
-        this.ctx.fillText(this.text, this.x, this.y + 5 );
+        const date = new Date();
+        this.ctx.fillText(date.getSeconds().toString(), this.x, this.y + 5 );
     }
 
     update(width, height) {

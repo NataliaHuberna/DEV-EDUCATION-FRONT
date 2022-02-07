@@ -6,19 +6,16 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.canvasRef = React.createRef();
+        this.requestIdRef = React.createRef();
         this.canvas = null;
         this.ctx = null;
         this.width = null;
         this.height = null;
         this.balls = [];
-        this.text = 0;
         this.state = {
-            text : 40,
             isFrame: true,
         };
     }
-    
-    setNewText = () => this.setState({text: this.state.text += 1});
     
     loop = () => {
         this.ctx.fillStyle = "rgba(0, 0, 0, 0.25)";
@@ -28,8 +25,8 @@ class App extends React.Component {
             const size = this.random(30, 80);
             const x = this.random(0 + size, this.width - size);
             const y = this.random(0 + size, this.height - size);
-            const speedX = this.random(-3, 3);
-            const speedY = this.random(-3, 3);
+            const speedX = this.random(-1, 1);
+            const speedY = this.random(-1, 1);
             const red = this.random(0, 255);
             const green = this.random(0, 255);
             const blue = this.random(0, 255);
@@ -37,7 +34,7 @@ class App extends React.Component {
             const ball = new Ball(
                 this.ctx, x, y, speedX, speedY,
                 "rgb(" + red + "," + green + "," + blue + ")",
-                size, this.state.text
+                size
             );
             this.balls.push(ball);
         }
@@ -46,15 +43,16 @@ class App extends React.Component {
             this.balls[i].draw();
             this.balls[i].update(this.width, this.height);
         }
-        
-        if(this.state.isFrame){
-            requestAnimationFrame(this.loop);
-        } else {
-            this.timerId = setTimeout(()=>{
-               return this.loop();
-            }, 1000)
-        }
     };
+
+    tick=()=>{
+        if(this.state.isFrame){
+            this.loop();
+            this.requestIdRef.current = requestAnimationFrame(this.tick);
+        } else {
+            this.timerId = setInterval(()=> {this.loop()}, 1000);
+        }
+    }
     
     random(min, max) {
         return Math.floor(Math.random() * (max - min)) + min;
@@ -65,16 +63,19 @@ class App extends React.Component {
         this.ctx = this.canvas.current.getContext("2d");
         this.width = this.canvas.current.width;
         this.height = this.canvas.current.height;
-        this.interval = setInterval(()=>this.setNewText(), 1000);
-        this.loop();
+        this.tick();
     }
-    
-    componentWillUnmount() {
-        clearInterval(this.interval);
+
+    componentDidUpdate() {
         clearInterval(this.timerId);
+        this.tick();
     }
-    
-    toggleAnimation = ()=> this.setState({isFrame: !this.state.isFrame})
+
+    toggleAnimation = ()=> {
+        clearInterval(this.timerId);
+        cancelAnimationFrame(this.requestIdRef.current);
+        this.setState({isFrame: !this.state.isFrame});
+    }
     
     render() {
         return (
