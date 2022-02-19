@@ -1,0 +1,52 @@
+{
+  "compilerOptions": {
+    "downlevelIteration": true,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "alwaysStrict": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "strictNullChecks":false,
+    "baseUrl": "./",
+    "paths": {
+      "images/*": ["public/static/*"],
+      "src/*": [
+        "./src/*"
+      ],
+      "actions/*": [
+        "./src/redux/actions*"
+      ]
+    },
+    "target": "es5",
+    "strict": true,
+    "jsx": "preserve"
+  },
+  "exclude": [
+    "node_modules",
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.test.jsx",
+    "**/*.test.js",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "__mocks__"
+  ],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx"
+, "src/components/hocs/withAuth.jsx"  ]
+}
