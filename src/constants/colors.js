@@ -8,4 +8,7 @@ export const COLORS = {
     grey: 'rgb(157 145 119)',
     startGradient: '#a2e9e9',
     endGradient: '#e9bd5a',
-}
+    mainText: '#4a3e24',
+    backgroundLoader: 'rgba(0, 0, 0, 0.7)',
+    errorNotification: '#d30c12',
+};

@@ -1,8 +1,15 @@
 import React,  { useState, useEffect } from 'react';
 import {StDiv, StButton, StInput} from "./styled";
+import {useDispatch} from 'react-redux';
+import {addTodos} from '../../store/todos/actions';
 
-const TaskInput = ({addTask}) => {
+const TaskInput = () => {
+    const dispatch  = useDispatch();
 
+    const addTask = (task) => {
+        const newTask = {value: task, id: Date.now(), checked: false};
+        dispatch(addTodos(newTask));
+    };
     const inputRef = React.createRef();
     const[input, setInput] = useState('');
 
@@ -15,7 +22,7 @@ const TaskInput = ({addTask}) => {
         }
     };
 
-    const handleEnter = (event) => {if (event.key === 'Enter') addTaskToList()};
+    const handleEnter = (event) => {if (event.key === 'Enter') addTaskToList();};
     const inputChange = (event) => setInput(event.target.value );
 
     return (
@@ -32,6 +39,6 @@ const TaskInput = ({addTask}) => {
             </StButton>
         </StDiv>
     );
-}
+};
 
 export default TaskInput;

@@ -1,18 +1,21 @@
 import React from 'react';
 import {StDiv} from './styled';
 import Item from '../Item/Item';
+import {useSelector} from "react-redux";
+import {selectTodos} from "../../store/todos/selectors";
 
-const List = ({todos, deleteTask, checkChange}) => (
-    <StDiv>
-        {todos.map((el) => <Item 
-            taskText={el.value} 
-            deleteTask={deleteTask} 
-            key = {el.id} 
-            id={el.id} 
-            checked = {el.checked} 
-            checkChange = {checkChange} />
+const List = () => {
+    const todos  = useSelector(selectTodos);
+    return (
+        <StDiv>
+            {todos.map((el) => <Item
+                taskText={el.value}
+                key = {el.id}
+                id={el.id}
+                checked = {el.checked}/>
             )}
-    </StDiv>
-)
+        </StDiv>
+    );
+};
 
 export default List;
