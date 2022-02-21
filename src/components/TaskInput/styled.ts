@@ -13,7 +13,12 @@ export const StDiv = styled.div`
   margin-top: 40px;
 `;
 
-export const StButton = styled.button`  
+type TStButton = {
+    isDisabled: boolean,
+    dark: boolean
+};
+
+export const StButton = styled.button<TStButton>`  
     width: 15%;
     background-color: ${COLORS.blue};
     outline: none;

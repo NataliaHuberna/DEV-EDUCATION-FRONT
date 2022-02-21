@@ -1,7 +1,11 @@
 import styled from "styled-components";
 import {COLORS} from "../../constants/colors";
 
-export const StDescription = styled.div`
+type TDescription = {
+  dark: boolean
+};
+
+export const StDescription = styled.div<TDescription>`
   width: 80%;
   display: flex;
   align-items: center;
@@ -13,7 +17,11 @@ export const StDescription = styled.div`
   `}
 `;
 
-export const StItem = styled.div`  
+type TItem = {
+  checked: boolean
+};
+
+export const StItem = styled.div<TItem>`  
   display: flex;
   align-items: center;
   width: 500px;
@@ -38,7 +46,11 @@ export const StInputCheckbox = styled.input`
   cursor: pointer;
 `;
 
-export const Button = styled.button`
+type TButton = {
+  dark: boolean
+};
+
+export const Button = styled.button<TButton>`
   outline: none;
   border: none;
   background-color: ${COLORS.crimson};

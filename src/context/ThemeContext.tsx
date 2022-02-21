@@ -4,10 +4,7 @@ type TProps = {
     children: React.ReactNode
 };
 
-const ThemeContext = React.createContext({
-    dark: false,
-    toggleDark: () => ({})
-});
+const ThemeContext = React.createContext(null);
 
 const ThemeProvider: React.FC<TProps>  = ({children}) => {
     const [dark, setDark] = useState(false);

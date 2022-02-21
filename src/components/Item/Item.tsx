@@ -15,7 +15,7 @@ const Item: React.FC<TProps> = ({title, deleteTask, completed, checkChange, id} 
     const handleChangeCheckbox = () => checkChange(id);
     const handlDeleteTask = () => deleteTask(id);
     return (
-        <StItem checked={completed} dark={dark}>
+        <StItem checked={completed}>
             <StInputCheckbox onClick={handleChangeCheckbox} type="checkbox" checked={completed}/>
             <StDescription dark={dark}>{title}</StDescription>
             <Button onClick={handlDeleteTask} dark={dark}>Delete</Button>

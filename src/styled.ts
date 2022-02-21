@@ -1,7 +1,11 @@
 import styled from "styled-components";
 import {COLORS} from "src/constants/colors";
 
-export const StDiv = styled.div`
+type TDiv = {
+  dark: boolean
+};
+
+export const StDiv = styled.div<TDiv>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,7 +29,11 @@ export const StH2 = styled.h2`
   font-weight: 800;
 `;
 
-export const StButton = styled.div`
+type TButton = {
+  dark: boolean
+};
+
+export const StButton = styled.div<TButton>`
   position: absolute;
   width: 200px;
   right: 50px;

@@ -12,7 +12,11 @@ const fadeIn = keyframes`
   }
 `;
 
-export const StNotification = styled.div`
+type TStNotification = {
+    isSuccess: boolean
+};
+
+export const StNotification = styled.div<TStNotification>`
   background: ${({isSuccess}) => isSuccess ? COLORS.blue : COLORS.errorNotification};
   text-align: center;
   position: absolute;
