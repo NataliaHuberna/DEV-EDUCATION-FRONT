@@ -1,8 +1,6 @@
 import themeReducer from "../reducer";
 import {CHANGE_THEME } from "../actionTypes";
 
-themeReducer
-
 describe('reducer', () => {
     it('should provide the initial state', () => {
         expect(themeReducer(undefined, {})).toEqual({dark: false});
