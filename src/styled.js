@@ -34,8 +34,8 @@ export const StH1 = styled.h1`
 export const StButton = styled.div`
   position: absolute;
   width: 200px;
-  right: 50px;
-  bottom: 50px;
+  right: 30px;
+  top: 8px;
   border-radius: 50%;
   ${({dark}) => dark ? `
     background-color: ${COLORS.endGradient};

@@ -1,11 +1,8 @@
 import React from 'react';
 import {StDiv} from './styled';
-import Item from '../Item/Item';
-import {useSelector} from "react-redux";
-import {selectTodos} from "../../store/todos/selectors";
+import Item from '../Item';
 
-const List = () => {
-    const todos  = useSelector(selectTodos);
+const List = ({todos}) => {
     return (
         <StDiv>
             {todos.map((el) => <Item

@@ -1,17 +1,13 @@
 import React,  { useState, useEffect } from 'react';
 import {StDiv, StButton, StInput} from "./styled";
-import {useDispatch} from 'react-redux';
-import {addTodos} from '../../store/todos/actions';
 
-const TaskInput = () => {
-    const dispatch  = useDispatch();
-
+const TaskInput = ({addTodos}) => {
     const addTask = (task) => {
         const newTask = {value: task, id: Date.now(), checked: false};
-        dispatch(addTodos(newTask));
+        addTodos(newTask);
     };
     const inputRef = React.createRef();
-    const[input, setInput] = useState('');
+    const[input, setInput] = React.useState('');
 
     useEffect(()=> inputRef.current.focus());
 

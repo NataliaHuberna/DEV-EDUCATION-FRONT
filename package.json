@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/eslint-parser": "^7.17.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
     "@testing-library/user-event": "^13.2.1",
@@ -14,13 +15,14 @@
     "react-redux": "^7.2.6",
     "react-scripts": "5.0.0",
     "redux": "^4.1.2",
+    "redux-mock-store": "^1.5.4",
     "styled-components": "^5.3.3",
     "web-vitals": "^2.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --coverage --watchAll",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -43,7 +45,8 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.32.0",
-    "eslint-plugin-react": "^7.28.0"
+    "eslint": "^8.9.0",
+    "eslint-plugin-react": "^7.28.0",
+    "jest-watch-typeahead": "^0.6.5"
   }
 }

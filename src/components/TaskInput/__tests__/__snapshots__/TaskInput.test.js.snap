@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TaskInput should set in state 1`] = `ShallowWrapper {}`;
